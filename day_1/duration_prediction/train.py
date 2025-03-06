@@ -7,7 +7,7 @@ import pandas as pd
 # import seaborn as sns
 # import matplotlib.pyplot as plt
 import pickle
-import argparse
+import click
 
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.linear_model import LinearRegression
@@ -64,26 +64,22 @@ def run(train_date: date, val_date: date, out_path: str):
         pickle.dump(pipeline, f_out)
 
 
-def main():
-    parser = argparse.ArgumentParser(
-        description="Train a model on specified dates and save it to a file."
-    )
-    parser.add_argument(
-        "--train-date", required=True, help="Training Month in the format YYYY-MM"
-    )
-    parser.add_argument(
-        "--val-date", required=True, help="Validation Month in the format YYYY-MM"
-    )
-    parser.add_argument(
-        "--model-save-path",
-        required=True,
-        help="Path where the trained model will be saved",
-    )
-
-    args = parser.parse_args()
-    train_year, train_month = args.train_date.split("-")
-    val_year, val_month = args.val_date.split("-")
-    model_save_path = args.model_save_path
+@click.command(help="Trains the model given a training month and saves it")
+@click.option(
+    "--train-date", required=True, help="Training Month in the format YYYY-MM"
+)
+@click.option(
+    "--val-date", required=True, help="Validation Month in the format YYYY-MM"
+)
+@click.option(
+    "--model-save-path",
+    required=True,
+    help="Path where the trained model will be saved",
+)
+def main(train_date: str, val_date: str, model_save_path: str):
+    train_year, train_month = train_date.split("-")
+    val_year, val_month = val_date.split("-")
+    model_save_path = model_save_path
 
     train_date = date(int(train_year), int(train_month), 1)
     val_date = date(int(val_year), int(val_month), 1)
