@@ -23,3 +23,6 @@ uv add --dev jupyter seaborn
 
 if you want to use jupyter notebook, run the following in the terminal:
 `uv run jupyter notebook`
+
+Run with eg:
+`uv run python -m duration_prediction.main --train-date 2022-01 --val-date 2022-02 --model-save-path models/2022-01.pkl`
