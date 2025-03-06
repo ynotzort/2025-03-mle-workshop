@@ -82,11 +82,14 @@ def run(train_date: date, val_date: date, out_path: str):
         pipeline.fit(train_dicts, y_train)
         y_pred = pipeline.predict(val_dicts)
 
-        logger.info(f"MSE: {mean_squared_error(y_val, y_pred, squared=False)}")
+        mse = mean_squared_error(y_val, y_pred, squared=False)
+        logger.info(f"MSE: {mse}")
 
         logger.info(f"saving model to {out_path}")
         with open(out_path, "wb") as f_out:
             pickle.dump(pipeline, f_out)
+            
+        return mse
 
     except Exception as e:
         logger.error(f"Training failed: {str(e)}")
