@@ -64,7 +64,7 @@ def run(train_date: date, val_date: date, out_path: str):
         pickle.dump(pipeline, f_out)
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(
         description="Train a model on specified dates and save it to a file."
     )
@@ -88,3 +88,7 @@ if __name__ == "__main__":
     train_date = date(int(train_year), int(train_month), 1)
     val_date = date(int(val_year), int(val_month), 1)
     run(train_date, val_date, model_save_path)
+
+
+if __name__ == "__main__":
+    main()
