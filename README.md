@@ -2,6 +2,8 @@
 
 Here we learn the basics of MLE
 
+this is inspired by: https://github.com/alexeygrigorev/ml-engineering-contsructor-workshop
+
 ## How to install UV
 
 - Go to [https://github.com/astral-sh/uv](https://github.com/astral-sh/uv)
