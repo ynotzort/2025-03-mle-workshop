@@ -16,6 +16,16 @@ from sklearn.pipeline import make_pipeline
 
 
 def read_dataframe(filename):
+    """
+    Loads a parquet file, calculates ride durations, filters by duration (1-60 minutes), 
+    and converts location IDs to string type.
+
+    Args:
+        filename (str): Path to the parquet file.
+
+    Returns:
+        pd.DataFrame: Processed DataFrame with ride durations and categorical location IDs.
+    """
     df = pd.read_parquet(filename)
 
     df["duration"] = df.lpep_dropoff_datetime - df.lpep_pickup_datetime
