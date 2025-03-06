@@ -13,3 +13,12 @@ Here we learn the basics of MLE
 
 - run inside the folder day_1: `uv init --python 3.10`
 - run `uv sync`
+- run 
+```bash
+uv add scikit-learn==1.2.2 pandas pyarrow
+uv add --dev jupyter seaborn
+```
+
+- after fixing stuff we found out that we also need to run 
+`uv add numpy==1.26.4`
+
