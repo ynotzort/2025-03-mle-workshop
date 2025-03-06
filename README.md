@@ -18,7 +18,8 @@ Here we learn the basics of MLE
 uv add scikit-learn==1.2.2 pandas pyarrow
 uv add --dev jupyter seaborn
 ```
-
 - after fixing stuff we found out that we also need to run 
 `uv add numpy==1.26.4`
 
+if you want to use jupyter notebook, run the following in the terminal:
+`uv run jupyter notebook`
