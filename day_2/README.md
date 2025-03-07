@@ -9,3 +9,6 @@ add dependencies from day_1:
 
 copy over model from day 1.
 
+`uv add --dev requests`
+`uv add loguru`
+`uv add gunicorn`
