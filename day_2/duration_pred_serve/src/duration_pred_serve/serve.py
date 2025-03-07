@@ -29,6 +29,10 @@ def predict(features):
 
 app = Flask("duration-prediction")
 
+@app.route("/version", methods=["GET"])
+def version():
+    return VERSION
+
 @app.route("/predict", methods=["POST"])
 def predict_endpoint():
     ride = request.get_json()
