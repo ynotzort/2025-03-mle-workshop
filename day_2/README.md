@@ -12,3 +12,15 @@ copy over model from day 1.
 `uv add --dev requests`
 `uv add loguru`
 `uv add gunicorn`
+
+## Deploy to Cloud (Fly.io)
+- create an account at fly.io
+- install flyctl: `curl -L https://fly.io/install.sh | sh`
+- run:
+```
+  export FLYCTL_INSTALL="/home/codespace/.fly"
+  export PATH="$FLYCTL_INSTALL/bin:$PATH"
+```
+- copy those lines also to ~/.bashrc
+
+- run `fly launch`
