@@ -15,3 +15,7 @@ docker_build:
 	
 docker_run: docker_build
 	docker run -it -p 9696:9696 duration-prediction
+
+.PHONY: tests
+tests:
+	uv run pytest
