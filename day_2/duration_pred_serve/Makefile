@@ -9,3 +9,9 @@ serve:
 .PHONY: simple_predict_test
 simple_predict_test:
 	uv run integration_tests/predict-test.py
+
+docker_build:
+	docker build -t duration-prediction .
+	
+docker_run: docker_build
+	docker run -it -p 9696:9696 duration-prediction
