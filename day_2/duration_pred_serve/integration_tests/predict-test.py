@@ -9,3 +9,10 @@ trip = {
 
 response = requests.post(url, json=trip).json()
 print(response)
+
+assert "prediction" in response
+assert "duration" in response["prediction"]
+
+value = response["prediction"]["duration"]
+assert abs(value - 8.434670) < 0.001
+print("test passed")
