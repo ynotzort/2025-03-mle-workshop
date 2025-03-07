@@ -1,9 +1,16 @@
 import pickle
 from pathlib import Path
+import os
+from loguru import logger
 
 from flask import Flask, request, jsonify
 
-with Path("./models/2022-01.pkl").open("rb") as f_in:
+VERSION = os.getenv("VERSION", "n/a")
+MODEL_PATH = os.getenv("MODEL_PATH", "./models/default_model.pkl")
+
+logger.info(f"Starting up Version: {VERSION}")
+logger.info(f"Using model: {MODEL_PATH}")
+with Path(MODEL_PATH).open("rb") as f_in:
     model = pickle.load(f_in)
     
 
@@ -41,8 +48,10 @@ def predict_endpoint():
     result = {
         "prediction": {
             "duration": prediction,
-        }
+        },
+        "version": VERSION
     }
+    logger.debug(f"Compute pred for input {features} : {prediction}")
     return jsonify(result)
 
 if __name__ == "__main__":
